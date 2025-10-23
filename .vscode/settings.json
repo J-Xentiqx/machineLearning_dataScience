@@ -1,0 +1,90 @@
+{
+  // PDF liegt in build/
+  "latex-workshop.latex.outDir": "build",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  // Rezepte = Befehlsketten
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "XeLaTeX ➜ Biber ➜ Makeglossaries ➜ XeLaTeX ➜ XeLaTeX",
+      "tools": [
+        "xelatex_main",
+        "biber_main",
+        "makeglossaries_main",
+        "xelatex_main",
+        "xelatex_main"
+      ]
+    }
+  ],
+  // Tools = einzelne Befehle
+  "latex-workshop.latex.tools": [
+    {
+      "name": "xelatex_main",
+      "command": "xelatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-output-directory=build",
+        "main.tex"
+      ]
+    },
+    {
+      "name": "biber_main",
+      "command": "biber",
+      "args": [
+        "build/main"
+      ]
+    },
+    {
+      "name": "makeglossaries_main",
+      "command": "makeglossaries",
+      "args": [
+        "-d",
+        "build",
+        "main"
+      ]
+    }
+  ],
+  // Dieses Rezept als Standard verwenden
+  "latex-workshop.latex.recipe.default": "first",
+  "editor.wordWrap": "on",
+  "editor.fontSize": 20,
+  "workbench.colorTheme": "Ayu Dark", // oder "One Dark Pro Night Flat"
+  "inlineChat.lineNaturalLanguageHint": false,
+  "latex-workshop.view.pdf.color.dark.backgroundColor": "#1e1e1e",
+  // Latex Darkmode
+  "latex-workshop.view.pdf.invert": 0.9,
+  "latex-workshop.view.pdf.invertMode.enabled": "always",
+
+  // # _ & hervorheben
+  "highlight.regexes": {
+    "(?<!\\\\)(&)": {
+      "filterLanguageRegex": "latex",
+      "decorations": [
+        {
+          "color": "#d32f2f",
+          "backgroundColor": "#fff2f2"
+        }
+      ]
+    },
+    "(?<!\\\\)(_)": {
+      "filterLanguageRegex": "latex",
+      "decorations": [
+        {
+          "color": "#d32f2f",
+          "backgroundColor": "#fff2f2"
+        }
+      ]
+    },
+    "(?<!\\\\)(#)": {
+      "filterLanguageRegex": "latex",
+      "decorations": [
+        {
+          "color": "#d32f2f",
+          "backgroundColor": "#fff2f2"
+        }
+      ]
+    }
+  }
+}
